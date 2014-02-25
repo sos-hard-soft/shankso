@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des cadres</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template.xhtml">
+            <ui:define name="content">	
+                <div></div>
+                <p:messages for="update"/>
+                <f:view>
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="designation" for="designation" />
+                            <p:inputText id="designation" value="#{articleController.newArticle.designation}" title="Designation" />
+                            <p:outputLabel value="Description:" for="description" />
+                            <p:inputText id="description" value="#{articleController.newArticle.description}" title="Description" />
+                            <p:outputLabel value="UniteMesure:" for="uniteMesure" />
+                            <p:inputText id="uniteMesure" value="#{articleController.newArticle.uniteMesure}" title="UniteMesure" />
+                            <p:outputLabel value="PrixUnitaire:" for="prixUnitaire" />
+                            <p:inputText id="prixUnitaire" value="#{articleController.newArticle.prixUnitaire}" title="PrixUnitaire" />
+                            <p:outputLabel value="Categorie:" for="categorie" />
+                            <h:selectOneMenu id="categorie" value="#{articleController.newArticle.categorie}" >
+                                <f:selectItems value="#{categorieController.all}"/>
+                            </h:selectOneMenu>
+                        </p:panelGrid>
+                        <p:commandButton value="Enregistrer" action="#{articleController.doCreate}" />
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

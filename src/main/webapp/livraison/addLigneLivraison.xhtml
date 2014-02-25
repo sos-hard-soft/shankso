@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des cadres</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template.xhtml">
+            <ui:define name="content">	
+                <div></div>
+                <p:messages for="update"/>
+
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:selectOneMenu id="article" value="#{livraisonController.newLL.article}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{articleController.all}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Quantite:" for="quantite" />
+                            <p:inputText id="quantite" value="#{livraisonController.newLL.quantite}" title="Quantite" />
+                            <p:outputLabel value="Article:" for="article" />
+                            
+                        </p:panelGrid>
+                        
+                        <p:commandButton value="Enregistrer" action="#{livraisonController.doAddLL}" />
+                    </h:form>
+                </f:view>
+
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h1>Liste des cadres</h1>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template.xhtml">
+            <ui:define name="content">	
+                <div></div>
+                <p:messages for="update"/>
+
+                <f:view>
+                     <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="NumeroLivraison:" for="numeroLivraison" />
+                            <p:inputText id="numeroLivraison" value="#{livraisonController.newLivraison.numeroLivraison}" title="NumeroLivraison" />
+                            <p:outputLabel value="DateLivraison:" for="dateLivraison" />
+                            <p:calendar id="dateLivraison" value="#{livraisonController.newLivraison.dateLivraison}" title="DateLivraison" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:calendar>
+                            <p:outputLabel value="Details:" for="details" />
+                            <p:inputText id="details" value="#{livraisonController.newLivraison.details}" title="Details" />
+                            <p:outputLabel value="Fournisseur:" for="fournisseur" />
+                            <p:selectOneMenu id="fournisseur" value="#{livraisonController.newLivraison.fournisseur}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fournisseurController.all}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        
+                        <p:commandButton value="Enregistrer" action="#{livraisonController.doCreate}" />
+                    </h:form>
+                </f:view>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
